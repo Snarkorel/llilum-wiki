@@ -48,9 +48,12 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
 * now you can set a breakpoint with command _b main_ and then issue a _continue_ command   
   * gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`  
 
-![gdb debug window]((https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)  
+![gdb debug window](https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)  
 
-  * Welcome to Zelig!  
+
+Welcome to Zelig!  
+
+
 
 P.S. you can install the trial version of VisualGDB to use the Visual Studio UI and debug with the usual F5/10/11 key shortcuts. 
 
