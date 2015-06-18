@@ -1,25 +1,37 @@
 # Setup and Build Instructions
 
 ## Setup
-* Clone the entire repo with: _git clone https://github.com/NETMF/zelig-pr.git_ into directory _\<repo\>_
-* Move to directory _\<repo\>_\\external_ and install GCC and LLVM using the scripts located in that directory
-* setup the following environment variables:   
-  * LLVM_BIN=_\<repo\>_\\external\\LLVM\\Debug\\bin\\  
-  * LLVM_INCLUDE=_\<repo\>_\\external\\LLVM\\include\\  
-  * LLVM_LIBS=_\<repo\>_\\external\\LLVM\\  
-  * GCC4MBED_DIR=_\<repo\>_\\external\\gcc4mbed
-* change LLVM header file IRbuilder.h. line 74, from 
+
+Pre-requisites are  
+1. Visual Studio 2013  
+2. LLVM 3.5 or above   
+3. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to build with GCC  
+
+To build LLVM, one needs to install [CMake](http://www.cmake.org/download/) and add it to the path. 
+To build LLVM, please follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html). 
+
+The instructions below will refer to the mandatory as well optional steps. Optional steps are marked clearly and refer to, for example, how to build/install LLVM, should one not have done that yet. 
+
+* Clone the entire repo with: _git clone https://github.com/NETMF/zelig-pr.git_ into directory _\<repo\>_  
+* [OPTIONAL] Move to directory _\<repo\>_\\external_ and install LLVM using the script located in that directory. You will need CMake to complete this step. setup the following environment variables:   
+```
+ LLVM_BIN=_\<repo\>_\\external\\LLVM\\Debug\\bin\\  
+ LLVM_INCLUDE=_\<repo\>_\\external\\LLVM\\include\\  
+ LLVM_LIBS=_\<repo\>_\\external\\LLVM\\  
+```
+  * change LLVM header file IRbuilder.h. line 74, from 
 
 `InsertPt = nullptr;`  to  
 `InsertPt = BasicBlock::iterator(nullptr);`  
 
-* move to directory _\<repo\>_\\Zelig\ext-tools and build the a few projects in the directories below, by opening their solution with Visual Studio and building it. If asked to upgrade the project, just do it and ignore any errors or warnings. 
-  * GLEE 
-  * JLINK  
-  * CSharpTools\Parser  
-  * TargetAdapters  
-  * binutils 
-* \[optional, pre-built binaries are available and referenced by other projects\] Move to directory _\<repo\>_\\Zelig\Zelig and pen Zelig solution _Zelig.sln_ 
+* install GCC from the same directory usign the other installation installation script. Set up the following environment variable for GCC
+
+```
+GCC4MBED_DIR=_\<repo\>_\\external\\gcc4mbed
+```
+
+
+* Move to directory _\<repo\>_\\Zelig\Zelig and pen Zelig solution _Zelig.sln_ 
   * build LLVMIR project first under code transformations, it will take a while 
   * build the rest of the solution 
 * You are now ready to try the system on a real device! 
