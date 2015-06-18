@@ -1,4 +1,4 @@
-# Detailed System Description 
+# Brief System Description 
 
 Zelig is not dissimilar from LLVM. As a matter of facts, the code base started a while back and the vast majority of the code was created by D.M., the same developer that created the core of .NET Micro Framework TS interpreter.  
 Zelig ingests MSIL out of a standard .dll or .exe set of files, and then transforms MSIL into a custom high level IR to apply a series of optimizations, just like LLVM does. Zelig also features an abstraction for the target HW platform, which is used to produce a runnable image. 
