@@ -227,15 +227,10 @@ The application looks like the following:
 The measured performance is **3.45Mhz** !!  
 
 
+# Conclusions 
+At the first performance check, with little optimization, Zelig is ~300 times faster than .NET Micro Framework and only 9% slower than a native C/C++ solution.  
 
-### \(\*\) LLVM Optimizations
-Only high level optimization and then LLVM with the following optimizations:
-
-_%LLVM_BIN%\opt -scalarrepl -targetlibinfo -verify -mem2reg -constmerge -adce -globaldce -time-passes Microsoft.Zelig.Test.mbed.Simple.bc -o Microsoft.Zelig.Test.mbed.Simple_opt.bc_
-
-_%LLVM_BIN%\llc -code-model=small -data-sections -relocation-model=pic -march=thumb -mcpu=cortex-m3 -filetype=obj -mtriple=Thumb-NoSubArch-UnknownVendor-UnknownOS-GNUEABI-ELF -o=Microsoft.Zelig.Test.mb_
-_ed.Simple_opt.o Microsoft.Zelig.Test.mbed.Simple_opt.bc_
-
+Stay tuned for code size measurements. 
 
 
 ### \(\*\) LLVM Optimizations
@@ -245,3 +240,4 @@ _%LLVM_BIN%\opt -scalarrepl -targetlibinfo -verify -mem2reg -constmerge -adce -g
 
 _%LLVM_BIN%\llc -code-model=small -data-sections -relocation-model=pic -march=thumb -mcpu=cortex-m3 -filetype=obj -mtriple=Thumb-NoSubArch-UnknownVendor-UnknownOS-GNUEABI-ELF -o=Microsoft.Zelig.Test.mb_
 _ed.Simple_opt.o Microsoft.Zelig.Test.mbed.Simple_opt.bc_
+
