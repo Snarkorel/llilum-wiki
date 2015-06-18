@@ -19,7 +19,7 @@
   * CSharpTools\Parser  
   * TargetAdapters  
   * binutils 
-* [optional, pre-built binaries are available and referenced by other projects] Move to directory _\<repo\>_\\Zelig\Zelig and pen Zelig solution _Zelig.sln_ 
+* \[optional, pre-built binaries are available and referenced by other projects\] Move to directory _\<repo\>_\\Zelig\Zelig and pen Zelig solution _Zelig.sln_ 
   * build LLVMIR project first under code transformations, it will take a while 
   * build the rest of the solution 
 * You are now ready to try the system on a real device! 
