@@ -11,7 +11,7 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
 * Make the FrontEnd project the startup project in your solution, or simply run the FrontEnd executable from the command line
   * if using the solution, configure the debug properties as follows: `cfg ..\\..\\..\\..\\Zelig\\CompileTime\\CodeGenerator\\FrontEnd\\mbed_simple.FrontEndConfig`  
 
-![FronEnd proje debug configuration](https://github.com/MSOpenTech/il2n-pr/blob/il2ir_demo/zelig/docs/FrontEndconfig.PNG)
+![FronEnd proje debug configuration](https://github.com/NETMF/zelig-pr/wiki/pics/FrontEndconfig.PNG)
 
   * if running from the command line, simply pass the same `-cfg` parameters pointing to the above mentioned _v_ configuration file 
   * The build output directory will be located in _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\
@@ -44,11 +44,11 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
 `40                  __debugbreak();`  
 `=> 0x0000017a <\_start+22>      00 be   bkpt    0x0000 `     
 
-* a rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/gdb_1.html or in this [PDF](https://github.com/MSOpenTech/il2n-pr/blob/il2ir_demo/zelig/docs/gdbTutorial.pdf) file 
+* a rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/gdb_1.html or in this [PDF]((https://github.com/NETMF/zelig-pr/wiki/gdbTutorial.pdf) file 
 * now you can set a breakpoint with command _b main_ and then issue a _continue_ command 
   * gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`
 
-![gdb debug window](https://github.com/MSOpenTech/il2n-pr/blob/il2ir_demo/zelig/docs/GDBDebug.PNG)
+![gdb debug window]((https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)
 
   * Welcome to Zelig!
 

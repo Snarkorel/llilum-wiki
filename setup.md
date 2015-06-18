@@ -1,7 +1,7 @@
 # Setup and Build Instructions
 
 ## Setup
-* Clone the entire repo with: _git clone https://github.com/MSOpenTech/il2n-pr.git_ into directory _\<repo\>_
+* Clone the entire repo with: _git clone https://github.com/NETMF/zelig-pr.git_ into directory _\<repo\>_
 * Move to directory _\<repo\>_\\external_ and install GCC and LLVM using the scripts located in that directory
 * setup the following environment variables:   
   * LLVM_BIN=_\<repo\>_\\external\\LLVM\\Debug\\bin\\  
@@ -24,4 +24,4 @@
   * build the rest of the solution 
 * You are now ready to try the system on a real device! 
 
-Go to [Build and Run Test Demo](https://github.com/MSOpenTech/il2n-pr/wiki/demo) 
+Go to [Build and Run Test Demo](https://github.com/NETMF/zelig-pr/wiki/demo) 
