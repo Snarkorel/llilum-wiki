@@ -1,6 +1,6 @@
 # Preliminary performance data
 
-## NXP LPC1768
+## Test for NXP LPC1768
 This is a classic Cortex-M3 with 512Kb NOR Flash and 32Kb SRAM. It runs at 96MHz.  
 
 We compared toggling a pin through  .NET Micro Framework, the Mbed GPIO API using the online Mbed compiler,and using Zelig with minimal optimizations (*). 
