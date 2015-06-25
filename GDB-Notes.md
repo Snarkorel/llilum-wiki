@@ -16,7 +16,9 @@ That being said, the gdb server can be built into a standalone binary without de
 
 ## Visual Studio GDB
 
-From within Visual Studio, I only found two plugins to allow using Visual Studio as a GDB frontend, both of them commercial, so they won't work for us.
+Visual Studio 2015 comes with support for GDB via the Debug.MIDebugLaunch command.
+
+There also exist two plugins to allow using Visual Studio as a GDB frontend, both of them commercial, so they won't work for us.
 
 * http://www.visualgdb.com/
 * http://www.wingdb.com/
