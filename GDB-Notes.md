@@ -10,7 +10,7 @@
 
 ## CMSIS-DAP GDB Server
 
-The only FOSS (Apache Lic.) implementation I found comes from the pyOSD project (https://github.com/mbedmicro/pyOCD).
+The only FOSS (Apache Lic.) implementation I found comes from the pyOCD project (https://github.com/mbedmicro/pyOCD).
 This is a library to debug and write devices using CMSIS-DAP from Python.
 That being said, the gdb server can be built into a standalone binary without dependencies on Python so we might be able to use it. 
 
