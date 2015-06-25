@@ -9,16 +9,18 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
 
 ## Build Zelig image
 * Make the FrontEnd project the startup project in your solution, or simply run the FrontEnd executable from the command line
-  * if using the solution, configure the debug properties as follows: `cfg ..\\..\\..\\..\\Zelig\\CompileTime\\CodeGenerator\\FrontEnd\\mbed_simple.FrontEndConfig`  
+  * If using the solution, configure the debug properties as follows:  
+    `cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple.FrontEndConfig`  
 
-![FronEnd proje debug configuration](https://github.com/NETMF/zelig-pr/wiki/FrontEndconfig.PNG)
+![FrontEnd project debug configuration](https://github.com/NETMF/zelig-pr/wiki/FrontEndconfig.PNG)
 
-  * if running from the command line, simply pass the same `-cfg` parameters pointing to the above mentioned _v_ configuration file 
+  * If running from the command line, simply pass the same `-cfg` parameters pointing to the above mentioned _v_ configuration file 
   * The build output directory will be located in _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\
-* move to the build output directory _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\ and run `build.bat` to invoke LLVM optimizer and compiler, and finally GCC 
+* Open a command prompt, move to the root _\<repo\>_ directory, and run `setenv.cmd` to set local environment variables.
+* Move to the build output directory _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\ and run `build.bat` to invoke LLVM optimizer and compiler, and finally GCC 
   * GCC will link the object file created by LLVM into a simple runnable image 
-  * code size of entire executable and will be dumped and disassembly will be produced 
-  * build output will contain the following: 
+  * Code size of entire executable and will be dumped and disassembly will be produced 
+  * Build output will contain the following: 
     * **Microsoft.Zelig.Test.mbed.Simple.bc**: the LVM binary bit code 
     * **Microsoft.Zelig.Test.mbed.Simple.ll**: the LLVM readable bit code     
     * **Microsoft.Zelig.Test.mbed.Simple.TypeSystemDump.IrTxtpost**: Zelig readable IR with TS details 
@@ -28,28 +30,27 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
     * **Microsoft.Zelig.Test.mbed.Simple_opt.bc**: LLVM optimized bit code 
     * **Microsoft.Zelig.Test.mbed.Simple_opt.ll**: LLVM optimized readable bitcode 
     * **Microsoft.Zelig.Test.mbed.Simple_opt.o**: LLVM object code 
-* customize and invoke `deploy.bat` for your Mbed device
+* Customize and invoke `deploy.bat` for your Mbed device
     * (each Mbed device creates a virtual serial port on your host system, you can discover which one using Device Manager. Simply run _devmgmt.msc_ on any Windows machine and look under the _Ports_ node) 
-    * deployment is a simple file copy through MTP, thanks to the Mbed bootloader 
-    * when deploying the runnable image to the device, you will see the device blink 
-    * reset your device when deployment is complete (device stops blinking and copy completes) 
-  * your device is now ready for attaching a debugger
-* open and customize the script `debug.bat` to target the correct virtual serial port 
-    * the script will invoke gdb to aremotely attach on the specified COM port
-    * your output on GDB command line will show you are hitting a debug break: 
+    * Deployment is a simple file copy through MTP, thanks to the Mbed bootloader 
+    * When deploying the runnable image to the device, you will see the device blink 
+    * Reset your device when deployment is complete (device stops blinking and copy completes) 
+  * Your device is now ready for attaching a debugger
 
-`(gdb) target remote com3`  
-`Remote debugging using com3`  
-`start () at gcc4mbed.c:40`  
-`40                  __debugbreak();`  
-`=> 0x0000017a <\_start+22>      00 be   bkpt    0x0000 `     
+## Debugging
+* Launch [pyOCD](https://launchpad.net/gcc-arm-embedded-misc/pyocd-binary/), which will automatically detect and connect to the device using CMSIS-DAP.
+* To debug on the command line:
+  * Launch the `debug.bat` script.
+  * Connect to the pyOCD debug server:  
+    `target remote :3333`
+  * Now you can set a breakpoint with the command _b_main_ and gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`.  
+    ![gdb debug window](https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)  
+* To debug in Visual Studio 2015:
+  * Launch VS from the command line so that it picks up your local environment variables.
+  * Open the command window (View | Other Windows | Command Window) and enter the following command:  
+    `Debug.MIDebugLaunch /OptionsFile:<repo>\Zelig\LLVM2IR_results\mbed\simple\DebugOptions.xml  /Executable:<repo>\Zelig\LLVM2IR_results\mbed\simple\LPC1768\mbed_simple.elf`
 
-* a rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/gdb_1.html or in this [PDF]((https://github.com/NETMF/zelig-pr/wiki/gdbTutorial.pdf) file   
-* now you can set a breakpoint with command _b main_ and then issue a _continue_ command   
-  * gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`  
-
-![gdb debug window](https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)  
-
+A rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/gdb_1.html or in this [PDF](https://github.com/NETMF/zelig-pr/wiki/gdbTutorial.pdf) file.
 
 Welcome to Zelig!  
 
