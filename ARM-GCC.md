@@ -1,4 +1,4 @@
-https://github.com/adamgreen/gcc4mbed. Python is needed for install.
+Installer/binaries can be found at: https://launchpad.net/gcc-arm-embedded
 
 The compiler tools are prepended with gcc-arm-none-eabi. This is the version of GCC that compiles for naked/no-OS targets.
 
