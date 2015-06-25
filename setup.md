@@ -2,10 +2,11 @@
 
 ## Setup
 
-Pre-requisites are  
+Prerequisites:
+
 1. Visual Studio 2013
 2. LLVM 3.5 or above
-3. [ARM GCC](https://launchpad.net/gcc-arm-embedded) installed and added to PATH.
+3. [ARM GCC](https://launchpad.net/gcc-arm-embedded) installed and added to PATH
 4. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to build with GCC
 
 To build LLVM, one needs to install [CMake](http://www.cmake.org/download/) and add it to the path. 
