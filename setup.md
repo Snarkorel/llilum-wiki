@@ -10,7 +10,7 @@ Prerequisites:
 4. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to build with GCC
 
 To build LLVM, one needs to install [CMake](http://www.cmake.org/download/) and add it to the path. 
-To build LLVM, please follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html). 
+To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html), but it is best to use the .zip file and script mentioned below. (some LLVM C++11 constructs do not work well with our managed C++ wrapper...)
 
 The instructions below will refer to the mandatory as well optional steps. Optional steps are marked clearly and refer to, for example, how to build/install LLVM, should one not have done that yet. 
 
