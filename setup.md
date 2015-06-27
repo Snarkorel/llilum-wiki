@@ -17,7 +17,8 @@ The instructions below will refer to the mandatory as well optional steps. Optio
 * Clone the entire repo with: _git clone https://github.com/NETMF/zelig-pr.git_ into directory _\<repo\>_  
 * [OPTIONAL] Move to directory _\<repo\>_\\external and install LLVM using the script located in that directory. You will need CMake to complete this step.
 * Change LLVM header file IRbuilder.h. line 74, from  `InsertPt = nullptr;`  to  `InsertPt = BasicBlock::iterator(nullptr);`
-* Move to directory _\<repo\>_\\Zelig\Zelig and open Zelig solution _Zelig.sln_ 
+* Open a new CMD shell, and run setenv.cmd in _\<repo\>_ root (this will set LLVM environment variables)
+* In the same CMD shell, move to directory _\<repo\>_\\Zelig\Zelig and open Zelig solution _Zelig.sln_ 
   * Build LLVMIR project first under code transformations; it will take a while.
   * Build the rest of the solution.
 * You are now ready to try the system on a real device! 
