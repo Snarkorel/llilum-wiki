@@ -15,14 +15,14 @@ To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](ht
 
 The instructions below will refer to the mandatory as well optional steps. Optional steps are marked clearly and refer to, for example, how to build/install LLVM, should one not have done that yet. 
 
-* Clone the entire repo with: _git clone https://github.com/NETMF/zelig-pr.git_ into directory _\<repo\>_, e.g. ```c:\src\zelig-pr\```>"
+* Clone the entire repo with: _git clone https://github.com/NETMF/llilum-pr.git_ into directory _\<repo\>_, e.g. ```c:\src\llilum-pr\```>"
 * [OPTIONAL] Open a VS2013 CMD prompt and move to directory _\<repo\>_\\external and install LLVM using the script located in that directory. You will need CMake to complete this step.
 * Change LLVM header file IRbuilder.h. line 74, from  `InsertPt = nullptr;`  to  `InsertPt = BasicBlock::iterator(nullptr);`
 * Install GCC from link above and define a ```GCC_BIN``` environment variable to point to the _arm-none-eabi-xxx_ tools, e.g. ```set GCC_BIN=e:\tools\compilers\gcc\4_9_2015q2\bin```
 * Open a new CMD shell, and run ```setenv.cmd``` in _\<repo\>_ root (this will set LLVM environment variables to point to the ```external\LLVM``` directory; if you installed LLVM elsewhere, please customize this step)
-* In the same CMD shell, move to directory _\<repo\>_\\Zelig\Zelig and open Zelig solution _Zelig.sln_, e.g. with ```c:\src\zelig-pr\zelig\Zelig>"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" Zelig.sln```
+* In the same CMD shell, move to directory _\<repo\>_\\Zelig\Zelig and open Zelig solution _Zelig.sln_, e.g. with ```c:\src\llilum-pr\zelig\Zelig>"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" Zelig.sln```
   * Build LLVMIR project first under code transformations; it will take a while.
   * Build the rest of the solution.
 * You are now ready to try the system on a real device! 
 
-Go to [Build and Run Test Demo](https://github.com/NETMF/zelig-pr/wiki/demo) 
+Go to [Build and Run Test Demo](https://github.com/NETMF/llilum-pr/wiki/demo) 

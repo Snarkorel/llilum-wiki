@@ -12,7 +12,7 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
   * If using the solution, configure the debug properties as follows:  
     `cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple.FrontEndConfig`  
 
-![FrontEnd project debug configuration](https://github.com/NETMF/zelig-pr/wiki/FrontEndconfig.PNG)
+![FrontEnd project debug configuration](https://github.com/NETMF/llilum-pr/wiki/FrontEndconfig.PNG)
 
   * If running from the command line, simply pass the same `-cfg` parameters pointing to the above mentioned _v_ configuration file 
   * The build output directory will be located in _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\
@@ -42,15 +42,15 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
   * Launch the `debug.bat` script. The script will launch pyOCD and try to connect to remote target on port 3333. 
   * If the `debug.bat` script fails you can launch pyOCD manually [pyOCD](https://launchpad.net/gcc-arm-embedded-misc/pyocd-binary/), which will automatically detect and connect to the device using CMSIS-DAP, and then connect to the pyOCD debug server with command `target remote :3333`
 * Now you can set a breakpoint with the command _b_main_ and gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`.  
-    ![gdb debug window](https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)  
+    ![gdb debug window](https://github.com/NETMF/llilum-pr/wiki/GDBDebug.PNG)  
 * To debug in Visual Studio 2015:
   * Launch VS from the command line so that it picks up your local environment variables.
   * Open the command window (View | Other Windows | Command Window) and enter the following command:  
     `Debug.MIDebugLaunch /OptionsFile:<repo>\Zelig\LLVM2IR_results\mbed\simple\DebugOptions.xml  /Executable:<repo>\Zelig\LLVM2IR_results\mbed\simple\LPC1768\mbed_simple.elf`
 
-A rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/gdb_1.html or in this [PDF](https://github.com/NETMF/zelig-pr/wiki/gdbTutorial.pdf) file.
+A rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/gdb_1.html or in this [PDF](https://github.com/NETMF/llilum-pr/wiki/gdbTutorial.pdf) file.
 
-Welcome to Zelig!  
+Welcome to LLILUM!  
 
 
 

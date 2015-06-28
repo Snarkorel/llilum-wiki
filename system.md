@@ -4,12 +4,12 @@ Zelig is not dissimilar from LLVM. As a matter of facts, the code base started a
 Zelig ingests MSIL out of a standard .dll or .exe set of files, and then transforms MSIL into a custom high level IR to apply a series of optimizations, just like LLVM does. Zelig also features an abstraction for the target HW platform, which is used to produce a runnable image. 
 
 Code in IR is represented as a Control Flow Graph (CFG) of basic blocks describes as rich set of Expression and Operator types that map well to MSIL constructs. Types are represented by a rich hierarchy of Type Representation that maps to the well known CLI topology. 
-The complete [IR class diagram](https://github.com/NETMF/zelig-pr/wiki/IR_ClassDiagram.jpg) gives you an idea of the IR organization. 
+The complete [IR class diagram](https://github.com/NETMF/llilum-pr/wiki/IR_ClassDiagram.jpg) gives you an idea of the IR organization. 
 
 During the optimization phases the CFG is traversed by a set of Transformation Handlers, and expression, operators and types are morphed and transformed to adapt to application and platform requirements. 
 The IR is lowered twice and ARM code is emitted for ARMv4 and v5 ISA directly, and a runnable imaged is synthesized based on the platform abstraction implemented by the user. For ARMv7 high level IR is translated into equivalent LLVM bit code, optimized and compiled through LLVM standard tools, such as [opt](http://llvm.org/docs/CommandGuide/opt.html) and [llc](http://llvm.org/docs/CommandGuide/llc.html). The resulting object code can be linked just like any other object code. 
 
-In our [demo](https://github.com/NETMF/zelig-pr/wiki/demo) we use [GCC](https://developer.mbed.org/users/AdamGreen/notebook/gcc4mbed/) and [Mbed](https://mbed.org/) to target a [NXP LPC1768](https://developer.mbed.org/platforms/mbed-LPC1768/) processor. 
+In our [demo](https://github.com/NETMF/llilum-pr/wiki/demo) we use [GCC](https://developer.mbed.org/users/AdamGreen/notebook/gcc4mbed/) and [Mbed](https://mbed.org/) to target a [NXP LPC1768](https://developer.mbed.org/platforms/mbed-LPC1768/) processor. 
 
 
 ## Type System Representation
@@ -18,7 +18,7 @@ Mostly the TS reprensetation is made of a CFG of Expressions and Operators creat
 At that time, Generics are resolved as well into a flat representation on the internal type hierarchy. 
 The same Type Representation is used both at Compile -Time and Run -Time. This characteristic is peculiar to Zelig and makes the system elegant and self contained. The Type System is part of the run-time support in the code base.
 
-A type is represented as an instance of [TypeRepresentation](https://github.com/NETMF/zelig-pr/blob/il2ir_demo/zelig/Zelig/RunTime/Zelig/TypeSystem/Types/TypeRepresentation.cs): 
+A type is represented as an instance of [TypeRepresentation](https://github.com/NETMF/llilum-pr/blob/il2ir_demo/zelig/Zelig/RunTime/Zelig/TypeSystem/Types/TypeRepresentation.cs): 
 
 
     public abstract class TypeRepresentation : BaseRepresentation
@@ -212,11 +212,11 @@ A type is represented as an instance of [TypeRepresentation](https://github.com/
 ### Type Hierarchy 
 In the picture below the type hierarchy for .NET types: 
 
-![.NET Types](https://github.com/NETMF/zelig-pr/wiki/dotNETTypes.png)
+![.NET Types](https://github.com/NETMF/llilum-pr/wiki/dotNETTypes.png)
 
 This is the equivalent Zelig types hierarchy, with the addition of the delayed type representation for generics parameters: 
 
-![Zelig types](https://github.com/NETMF/zelig-pr/wiki/ZeligTypes.png)
+![Zelig types](https://github.com/NETMF/llilum-pr/wiki/ZeligTypes.png)
 
 ### LLVM Type System layout
 LLVM is built for languages like C++. C++ lays virtual tables in front of an object and so will we in our translation to LLVM bit code. 
@@ -261,20 +261,20 @@ e.g.:
 Basic Blocks are created during the ingestion of MSIL. Here is the class diagram for basic blocks:
 
 
-![Basic Blocks Class Diagram in Zelig IR](https://github.com/NETMF/zelig-pr/wiki/BasicBlocks.jpg)
+![Basic Blocks Class Diagram in Zelig IR](https://github.com/NETMF/llilum-pr/wiki/BasicBlocks.jpg)
 
 
 ## Expressions 
 Expressions are created during the ingestion of MSIL. 
 
-![Expressions Class Diagram in Zelig IR](https://github.com/NETMF/zelig-pr/wiki/Expressions.jpg)
+![Expressions Class Diagram in Zelig IR](https://github.com/NETMF/llilum-pr/wiki/Expressions.jpg)
 
 
 ## Operators 
 Operators are the interesting part of the system. Operators are created during the ingestion of MSIL and then evolved, or substituted, during the optimization phase. 
 A subset of the operators hierarchy is in the picture below.  
 
-![A Small Subset of Operators Class Diagram in Zelig IR](https://github.com/NETMF/zelig-pr/wiki/OperatorsSubset.jpg)
+![A Small Subset of Operators Class Diagram in Zelig IR](https://github.com/NETMF/llilum-pr/wiki/OperatorsSubset.jpg)
 
 #Code Transformations
 Code transformation reflect on operators and expressions. Expressions are evaluated and transformed, Operators are evolved. Let's see one example of an operator transformation:  
