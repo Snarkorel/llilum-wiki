@@ -38,12 +38,10 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
   * Your device is now ready for attaching a debugger
 
 ## Debugging
-* Launch [pyOCD](https://launchpad.net/gcc-arm-embedded-misc/pyocd-binary/), which will automatically detect and connect to the device using CMSIS-DAP.
 * To debug on the command line:
-  * Launch the `debug.bat` script.
-  * Connect to the pyOCD debug server:  
-    `target remote :3333`
-  * Now you can set a breakpoint with the command _b_main_ and gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`.  
+  * Launch the `debug.bat` script. The script will launch pyOCD and try to connect to remote target on port 3333. 
+  * If the `debug.bat` script fails you can launch pyOCD manually [pyOCD](https://launchpad.net/gcc-arm-embedded-misc/pyocd-binary/), which will automatically detect and connect to the device using CMSIS-DAP, and then connect to the pyOCD debug server with command `target remote :3333`
+* Now you can set a breakpoint with the command _b_main_ and gdb will show you are hitting function `Microsoft.Zelig.Runtime.Bootstrap::Initialization()`.  
     ![gdb debug window](https://github.com/NETMF/zelig-pr/wiki/GDBDebug.PNG)  
 * To debug in Visual Studio 2015:
   * Launch VS from the command line so that it picks up your local environment variables.
