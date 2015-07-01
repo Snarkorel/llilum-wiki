@@ -52,11 +52,3 @@ A rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/g
 
 Welcome to LLILUM!  
 
-
-
-P.S. you can install the trial version of VisualGDB to use the Visual Studio UI and debug with the usual F5/10/11 key shortcuts. 
-
-
-
-
-
