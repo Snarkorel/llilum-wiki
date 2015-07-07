@@ -8,7 +8,7 @@ Prerequisites:
 2. LLVM 3.5
 3. Python [2.7.4](https://www.python.org/downloads/release/python-2710/) installed and added to PATH
 4. [ARM GCC](https://launchpad.net/gcc-arm-embedded) installed and added to PATH
-5. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to build with GCC
+5. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) installed and added to PATH
 
 To build LLVM, one needs to install [CMake](http://www.cmake.org/download/) and add it to the path. 
 To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html), but it is best to use the .zip file and script mentioned below. (some LLVM C++11 constructs do not work well with our managed C++ wrapper...)
