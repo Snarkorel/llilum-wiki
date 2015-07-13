@@ -10,11 +10,11 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
 ## Build Zelig image
 * Make the FrontEnd project the startup project in your solution, or simply run the FrontEnd executable from the command line
   * If using the solution, configure the debug properties as follows:  
-    `cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple.FrontEndConfig`  
+    `-cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple.FrontEndConfig`  
 
 ![FrontEnd project debug configuration](https://github.com/NETMF/llilum-pr/wiki/FrontEndconfig.PNG)
 
-  * If running from the command line, simply pass the same `-cfg` parameters pointing to the above mentioned _v_ configuration file 
+  * If running from the command line, simply pass the same `-cfg` parameters pointing to the above mentioned configuration file 
   * The build output directory will be located in _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\
 * Open a command prompt, move to the root _\<repo\>_ directory, and run `setenv.cmd` to set local environment variables.
 * Move to the build output directory _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\ and run `build.bat` to invoke LLVM optimizer and compiler, and finally GCC 
