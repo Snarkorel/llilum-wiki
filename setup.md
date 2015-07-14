@@ -18,7 +18,7 @@ The instructions below will refer to the mandatory as well optional steps. Optio
 * Clone the entire repo with: _git clone https://github.com/NETMF/llilum-pr.git_ into directory _\<repo\>_, e.g. ```c:\src\llilum-pr\```>"
 * [OPTIONAL] Open a VS2013 CMD prompt and move to directory _\<repo\>_\\external and install LLVM using the script located in that directory. You will need CMake to complete this step.
 * Change LLVM header file IRbuilder.h. line 74, from  `InsertPt = nullptr;`  to  `InsertPt = BasicBlock::iterator(nullptr);`
-* Install GCC from link above and define a ```GCC_BIN``` environment variable to point to the _arm-none-eabi-xxx_ tools, e.g. ```set GCC_BIN=e:\tools\compilers\gcc\4_9_2015q2\bin```
+* Install GCC from link above and define a ```GCC_BIN``` environment variable to point to the _arm-none-eabi-xxx_ tools, e.g. ```set GCC_BIN=e:\tools\compilers\gcc\4_9_2015q2\bin\``` (Please note the trailing _'\\'_).
 * Open a new CMD shell, and run ```setenv.cmd``` in _\<repo\>_ root (this will set LLVM environment variables to point to the ```external\LLVM``` directory; if you installed LLVM elsewhere, please customize this step)
 * In the same CMD shell, move to directory _\<repo\>_\\Zelig\Zelig and open Zelig solution _Zelig.sln_, e.g. with ```c:\src\llilum-pr\zelig\Zelig>"C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\devenv.exe" Zelig.sln```
   * Build LLVMIR project first under code transformations; it will take a while.
