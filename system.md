@@ -14,9 +14,9 @@ In our [demo](https://github.com/NETMF/llilum-pr/wiki/demo) we use [GCC](https:/
 
 ## Type System Representation
 Let's look into some details of the TS intermediate representation (IR). This is where all code transformation happen. 
-Mostly the TS reprensetation is made of a CFG of Expressions and Operators created during the MSIL ingestion. 
+Mostly the TS representation is made of a CFG of Expressions and Operators created during the MSIL ingestion. 
 At that time, Generics are resolved as well into a flat representation on the internal type hierarchy. 
-The same Type Representation is used both at Compile -Time and Run -Time. This characteristic is peculiar to Zelig and makes the system elegant and self contained. The Type System is part of the run-time support in the code base.
+The same Type Representation is used both at Compile -Time and Run -Time. This characteristic is peculiar to Zelig and makes the system elegant and self-contained. The Type System is part of the run-time support in the code base.
 
 A type is represented as an instance of [TypeRepresentation](https://github.com/NETMF/llilum-pr/blob/il2ir_demo/zelig/Zelig/RunTime/Zelig/TypeSystem/Types/TypeRepresentation.cs): 
 
@@ -221,7 +221,7 @@ This is the equivalent Zelig types hierarchy, with the addition of the delayed t
 ### LLVM Type System layout
 LLVM is built for languages like C++. C++ lays virtual tables in front of an object and so will we in our translation to LLVM bit code. 
 
-Any reference type will derive from `System.Object`. `System.Object` will carried the `Microsoft.Zelig.Runtime.ObjectHeader` member at offset 0, to allows handling of the Object in the managed heap. The `ObjectHeader` type will carry the identity and GC tracking info. 
+Any reference type will derive from `System.Object`. `System.Object` will carry the `Microsoft.Zelig.Runtime.ObjectHeader` member at offset 0, to allow handling of the Object in the managed heap. The `ObjectHeader` type will carry the identity and GC tracking info. 
 
 In Zelig code this looks like: 
 
@@ -314,7 +314,7 @@ Code transformation reflect on operators and expressions. Expressions are evalua
             nc.MarkAsModified();
         }
 
-In the example above the code is lowering mid level IR and it transforming a `LoadInstanceFieldAddress` operator into a simple offset by representing it with a `BinaryOperator` for a _add_. This is applied, for example, when array elements are accessed through managed pointer types by CLI standard. 
+In the example above the code is lowering mid-level IR and it transforming a `LoadInstanceFieldAddress` operator into a simple offset by representing it with a `BinaryOperator` for a _add_. This is applied, for example, when array elements are accessed through managed pointer types by CLI standard. 
 The Operator is then marked as modified so that the transformation pipeline can continue. 
 The annotations on the method ensure that this transformation is applied to the right operator at the correct operator during the proper compilation phase. 
 
