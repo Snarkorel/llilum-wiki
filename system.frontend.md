@@ -91,3 +91,5 @@ A typical configuration file for the compiler looks like a list of instructions,
 * **-ReloadState**: instructs the compiler to reload the last persisted IR. Useful to debug and develop LLVM IR translation. 
 * **-DumpLLVMIR_TextRepresentation**: instructs the compiler to dump the LLVM IR in readable format.
 * **-MaxProcs** \<_n_\>: instructs the compiler to use _n_ threads to compile
+
+[==> repo layout](https://github.com/NETMF/llilum/wiki/docs/resources/repo)

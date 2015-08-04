@@ -1,4 +1,4 @@
-# Brief System Description 
+# System Architecture
 
 Zelig is not dissimilar from LLVM. As a matter of facts, the code base started a while back and the vast majority of the code was created by D.M., the same developer that created the core of .NET Micro Framework TS interpreter.  
 Zelig ingests MSIL out of a standard .dll or .exe set of files, and then transforms MSIL into a custom high level IR to apply a series of optimizations, just like LLVM does. Zelig also features an abstraction for the target HW platform, which is used to produce a runnable image. 
@@ -9,7 +9,7 @@ The complete [IR class diagram](https://github.com/NETMF/llilum-pr/wiki/IR_Class
 During the optimization phases the CFG is traversed by a set of Transformation Handlers, and expression, operators and types are morphed and transformed to adapt to application and platform requirements. 
 The IR is lowered twice and ARM code is emitted for ARMv4 and v5 ISA directly, and a runnable imaged is synthesized based on the platform abstraction implemented by the user. For ARMv7 high level IR is translated into equivalent LLVM bit code, optimized and compiled through LLVM standard tools, such as [opt](http://llvm.org/docs/CommandGuide/opt.html) and [llc](http://llvm.org/docs/CommandGuide/llc.html). The resulting object code can be linked just like any other object code. 
 
-In our [demo](https://github.com/NETMF/llilum-pr/wiki/demo) we use [GCC](https://developer.mbed.org/users/AdamGreen/notebook/gcc4mbed/) and [Mbed](https://mbed.org/) to target a [NXP LPC1768](https://developer.mbed.org/platforms/mbed-LPC1768/) processor. 
+In our [demo](https://github.com/NETMF/llilum-pr/wiki/demo) we use [GCC for ARM](https://launchpad.net/gcc-arm-embedded/) and [Mbed](https://mbed.org/) to target a [NXP LPC1768](https://developer.mbed.org/platforms/mbed-LPC1768/) processor. 
 
 
 ## Type System Representation
@@ -221,7 +221,7 @@ This is the equivalent Zelig types hierarchy, with the addition of the delayed t
 ### LLVM Type System layout
 LLVM is built for languages like C++. C++ lays virtual tables in front of an object and so will we in our translation to LLVM bit code. 
 
-Any reference type will derive from `System.Object`. `System.Object` will carry the `Microsoft.Zelig.Runtime.ObjectHeader` member at offset 0, to allow handling of the Object in the managed heap. The `ObjectHeader` type will carry the identity and GC tracking info. 
+Any reference type will derive from `System.Object`. `System.Object` will carried the `Microsoft.Zelig.Runtime.ObjectHeader` member at offset 0, to allows handling of the Object in the managed heap. The `ObjectHeader` type will carry the identity and GC tracking info. 
 
 In Zelig code this looks like: 
 
@@ -407,4 +407,4 @@ Notice how operations such as getting the length of an array or calling a finali
         }
 
 
- 
+[==> next](https://github.com/NETMF/llilum/wiki/system.build)
