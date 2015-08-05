@@ -22,9 +22,10 @@ As of right now, the prerequisites for building and using the SDK are:
 8. Visual Studio Llilum template and project type 
 
 ## Creating the SDK
-In order to create the SDK, the user must first go through the [setup steps](https://github.com/NETMF/llilum/wiki/setup). **Be sure to actually build!**  
-1. Open a command prompt to the repository root, `run setenv.cmd`, CD into `"<repo root>\Scripts"`
-2. Open `<repo_root>\VisualStudio\LlilumProjectType\LlilumApplication.sln` and rebuild this solution. 
+In order to create the SDK, the user must first go through the [setup steps](https://github.com/NETMF/llilum/wiki/setup). **Be sure to actually build the entire Llilum Solution!**  
+
+1. Open `<repo_root>\VisualStudio\LlilumProjectType\LlilumApplication.sln` right click on the solution, and click rebuild. 
+2. Open a command prompt to the repository root, `run setenv.cmd`, CD into `"<repo root>\Scripts"`
 3. Run CreateSDKDrop.bat from the Scripts directory. If all goes well, no errors will be shown, and a folder called SDKDrop will be created and filled in the Scripts directory. To keep your repo clean, call `CreateSDKDrop.bat <path>` where path is the location of where to place the SDK. 
 
 ## Installing Llilum SDK for VS2015
