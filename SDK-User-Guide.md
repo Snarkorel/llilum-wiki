@@ -7,8 +7,8 @@ The Llilum SDK is a set of tools that will allow users to get started working wi
 As of right now, the prerequisites for building and using the SDK are:
 * Visual Studio 2015 installed on the machine
 * Cross-platform development tools for Visual Studio for debugging purposes: [see prerequisites section](https://github.com/Microsoft/MIEngine/) 
-* [Visual Studio SDK](https://go.microsoft.com/fwlink/?LinkId=615455) 
-* [Visual Studio Extensibility Tools](http://aka.ms/vsprojectsystemextensibilityvsix)
+* [Visual Studio Extensibility Tools](https://go.microsoft.com/fwlink/?LinkId=615455) 
+* [Visual Studio Project System Extensibility Tools](http://aka.ms/vsprojectsystemextensibilityvsix)
 * LLVM and ARM GCC from [setup steps](https://github.com/NETMF/llilum/wiki/setup)
 
 ## Components 
@@ -22,7 +22,10 @@ As of right now, the prerequisites for building and using the SDK are:
 8. Visual Studio Llilum template and project type 
 
 ## Creating the SDK
-In order to create the SDK, the user must first go through the [setup steps](https://github.com/NETMF/llilum/wiki/setup). **Be sure to actually build!** Then, open a command prompt to the repository root, `run setenv.cmd`, CD into `"<repo root>\Scripts"` and then run CreateSDKDrop.bat from the Scripts directory. If all goes well, no errors will be shown, and a folder called SDKDrop will be created and filled in the Scripts directory. To keep your repo clean, call `CreateSDKDrop.bat <path>` where path is the location of where to place the SDK. 
+In order to create the SDK, the user must first go through the [setup steps](https://github.com/NETMF/llilum/wiki/setup). **Be sure to actually build!**  
+1. Open a command prompt to the repository root, `run setenv.cmd`, CD into `"<repo root>\Scripts"`
+2. Open `<repo_root>\VisualStudio\LlilumProjectType\LlilumApplication.sln` and rebuild this solution. 
+3. Run CreateSDKDrop.bat from the Scripts directory. If all goes well, no errors will be shown, and a folder called SDKDrop will be created and filled in the Scripts directory. To keep your repo clean, call `CreateSDKDrop.bat <path>` where path is the location of where to place the SDK. 
 
 ## Installing Llilum SDK for VS2015
 1. If you have previously installed the Llilum SDK, open Visual Studio and go to ```Tools -> Extensions and Updates``` and remove the Llilum application VSIX.
