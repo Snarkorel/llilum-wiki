@@ -16,7 +16,7 @@
 To build LLVM source code, you need to install [CMake](http://www.cmake.org/download/) and add it to your system's PATH environment variable. 
 To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html), but it is best to use the [BuildLlvmWithVS.cmd script file](https://github.com/NETMF/llilum/blob/dev/Zelig/Zelig/CompileTime/Llvm.NET/LibLLVM/BuildLlvmWithVS.cmd) provided in the Zelig repository.
 
-1. Simply copy `BuildLlvmWithVS.cmd` (located under _\<repo\>\Zelig\CompileTime\Llvm.NET\LibLLVM\_) into the root of your LLVM source tree for version 3.6.1
+1. Simply copy `BuildLlvmWithVS.cmd` (located under _\<repo\>\Zelig\Zelig\CompileTime\Llvm.NET\LibLLVM\_) into the root of your LLVM source tree for version 3.6.1
 2. run `BuildLlvmWithVS.cmd`
  * This will build LLVM for multiple platform and configuration combinations (\< x86 | x64 \> + \< Debug | Release | MinRelDebInfo\> ).
  * _Depending on your hardware this can take anywhere from 3-6 hours to run and creates ~20GB of binaries. Thus, for teams it is recommended to do it once and share the LLVM source root on your network so everyone doesn't need to do that and store all the results._  
@@ -30,7 +30,7 @@ To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](ht
 ### Building the Code Transformation Tools
 1. Clone the entire repo with: _git clone https://github.com/NETMF/llilum.git_ into directory _\<repo\>_, e.g. ```c:\src\llilum\```>"
 2. Install GCC from link above and define a ```GCC_BIN``` environment variable to point to the _arm-none-eabi-xxx_ tools, e.g. ```set GCC_BIN=e:\tools\compilers\gcc\4_9_2015q2\bin```  
-3. Open the Zelig solution \<repo\>\Zelig\Zelig\Zelig.sln
+3. Open the Zelig solution \<repo\>\Zelig\Zelig\LLILUM.sln
 4. Build the solution ( **Build** | **Build Solution** ). The property sheet should allow Visual Studio to find the LLVM binaries.
 5. You are now ready to try the system on a real device! 
 
