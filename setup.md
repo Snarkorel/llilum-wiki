@@ -4,7 +4,7 @@
 
 ### Prerequisites:
 1. Visual Studio 2015 (RTM)
-2. LLVM 3.6.1 \[ [download page]( http://llvm.org/releases/download.html#3.6.1 ) \]
+2. LLVM 3.7.0 \[ [download page]( http://llvm.org/releases/download.html#3.7.0 ) \]
 3. Python [2.7.4](https://www.python.org/downloads/release/python-2710/) installed and added to PATH
 4. [ARM GCC](https://launchpad.net/gcc-arm-embedded) installed and added to PATH
 5. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to build mBed sample code for target devices with GCC
