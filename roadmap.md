@@ -26,4 +26,3 @@ Some further ideas for discussion, contribution and scheduling
  * SSL 
  * Support for TEE 
  * Secure boot loading and attestation 
-
