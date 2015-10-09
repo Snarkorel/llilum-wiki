@@ -16,7 +16,7 @@
 To build LLVM source code, you need to install [CMake](http://www.cmake.org/download/) and add it to your system's PATH environment variable. 
 To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html), but it is best to use the [BuildLlvmWithVS.cmd script file](https://github.com/NETMF/llilum/blob/dev/Zelig/Zelig/CompileTime/Llvm.NET/LibLLVM/BuildLlvmWithVS.cmd) provided in the Zelig repository.
 
-1. Simply copy `BuildLlvmWithVS.cmd` (located under _\<repo\>\Zelig\Zelig\CompileTime\Llvm.NET\LibLLVM\_) into the root of your LLVM source tree for version 3.6.1
+1. Simply copy `BuildLlvmWithVS.cmd` (located under _\<repo\>\Zelig\Zelig\CompileTime\Llvm.NET\LibLLVM\_) into the root of your LLVM source tree for version 3.7.0
 2. run `BuildLlvmWithVS.cmd`
  * This will build LLVM for multiple platform and configuration combinations (\< x86 | x64 \> + \< Debug | Release | MinRelDebInfo\> ).
  * _Depending on your hardware this can take anywhere from 3-6 hours to run and creates ~20GB of binaries. Thus, for teams it is recommended to do it once and share the LLVM source root on your network so everyone doesn't need to do that and store all the results._  
