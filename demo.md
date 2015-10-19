@@ -1,5 +1,5 @@
 # Demo 
-The demo is implemented for a [NXP LPC1768 device](https://developer.mbed.org/platforms/mbed-LPC1768/), featuring 512KB of NOR FLASH and 64Kb of SRAM. You can also use a K64F-FRDM board by Freescale. 
+The demo is implemented for a [NXP LPC1768 device](https://developer.mbed.org/platforms/mbed-LPC1768/), featuring 512KB of NOR FLASH and 64Kb of SRAM. You can also use a K64F-FRDM board by Freescale for which the setup procedure is largely equivalent. 
 
 The device is enabled for the Mbed ecosystem. Any other Mbed device could be used with minimal changes to the makefile at _\<repo\>_\\Zelig\\LLVM2IR_results\\mbed\\simple\\makefile.  
 
