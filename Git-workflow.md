@@ -69,13 +69,30 @@ When you're done, get back to the branch you want (it doesn't have to be the sam
     `git stash pop`  
 (pop will apply the last thing you stash and remove it from the list of stashes. Or you can do `git stash apply` instead if you want to have greater control or have multiple stashes that you want to apply out of order.)
 
-### Merging public pull requests
+# Merging public pull requests
 This section is written for developers with direct push access. In order to maintain a clean history and avoid unnecessary merges, avoid using the web UI to merge a pull request. Instead, use the following flow:
  1. Look up the pull request's full SHA hash ID. In the web UI, under "Commits", click the copy-to-clipboard icon.
  2. In your local cloned repository, run the following commands:  
     `git checkout dev`  
     `git pull upstream dev` to ensure your dev branch is up to date.  
     `git checkout <id>` to fetch the remote change.  
-    `git rebase dev` to set the change's predecessor to the latest change upstream/dev.  
+    `git rebase dev` to set the change's predecessor to the latest change upstream/dev. This may change the change's ID.  
     `git checkout dev`  
+    `git merge <rebased_id>`  
     `git push upstream dev`
+
+**Sample output:**  
+`S:\git\llilum [dev]> git checkout 17d869c`  
+`Note: checking out '17d869c'.`  
+`...`  
+`HEAD is now at 17d869c... Test commit; please ignore.`  
+`S:\git\llilum [(17d869c...)]> git rebase dev`  
+`First, rewinding head to replay your work on top of it...`  
+`Applying: Test commit; please ignore.`  
+`S:\git\llilum [(518f6c1...)]> git checkout dev`  
+`Warning: you are leaving 1 commit behind, not connected to any of your branches:`  
+`  518f6c1 Test commit; please ignore.`  
+`...`  
+`Switched to branch 'dev'`  
+`Your branch is up-to-date with 'origin/dev'.`  
+`S:\git\llilum [dev]> git merge 518f6c1`
