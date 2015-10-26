@@ -63,8 +63,19 @@ This workflow assumes that you have a private fork of the zelig-pr repo -- `http
 
 ### Side bar on stashing
 At any point, if you need to do something (say, pull down the latest from upstream) but you have staged or unstaged changes, stash them away:  
-	`git stash save "Description of the uncommitted changes"`  
-	`<do your other thing>`  
+    `git stash save "Description of the uncommitted changes"`  
+    `<do your other thing>`  
 When you're done, get back to the branch you want (it doesn't have to be the same as when you did the stash), and apply the stash.  
-	`git stash pop`  
+    `git stash pop`  
 (pop will apply the last thing you stash and remove it from the list of stashes. Or you can do `git stash apply` instead if you want to have greater control or have multiple stashes that you want to apply out of order.)
+
+### Merging public pull requests
+This section is written for developers with direct push access. In order to maintain a clean history and avoid unnecessary merges, avoid using the web UI to merge a pull request. Instead, use the following flow:
+ 1. Look up the pull request's full SHA hash ID. In the web UI, under "Commits", click the copy-to-clipboard icon.
+ 2. In your local cloned repository, run the following commands:  
+    `git checkout dev`  
+    `git pull upstream dev` to ensure your dev branch is up to date.  
+    `git checkout <id>` to fetch the remote change.  
+    `git rebase dev` to set the change's predecessor to the latest change upstream/dev.  
+    `git checkout dev`  
+    `git push upstream dev`
