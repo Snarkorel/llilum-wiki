@@ -13,6 +13,9 @@
 
 ### Building required LLVM binaries:
 ###### (one time activity per LLVM version)
+To build the Llilum source code you will need to download the [3.7.0 sources](http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz) of LLVM.
+> NOTE: Use the links provided here to get the LLVM source code as alternate sites, including the Mirror on GitHub may not be the correct version. In fact, the GitHub Mirror will NOT be as it tracks the head of the development branch for the currently unreleased version rather than the latest stable released version.
+
 To build LLVM source code, you need to install [CMake](http://www.cmake.org/download/) and add it to your system's PATH environment variable. 
 To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html), but it is best to use the [BuildLlvmWithVS.cmd script file](https://github.com/NETMF/llilum/blob/dev/Zelig/Zelig/CompileTime/Llvm.NET/LibLLVM/BuildLlvmWithVS.cmd) provided in the Zelig repository.
 
