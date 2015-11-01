@@ -34,12 +34,12 @@ In order to create the SDK, the user must first go through the [setup steps](htt
 3. Copy the SDK folder to a location without spaces i.e. C:\SDK. If you have previously installed this SDK, it would help to place the SDKDrop folder in the same place as you previously had it
 4. Open an administrative command prompt, CD to the ```SDKDrop``` directory, and run ```InstallVSTools.cmd <ARM GCC path> <LLVM path>```
 
-* The ARM GCC path should include the version and resemble the following: C:\ARM_GCC\4.9\
-* The LLVM path should include the version and resemble the following: C:\LLVM\3.6.1\  
+* The ARM GCC path should include the version and resemble the following: ```C:\ARM_GCC\4.9\```
+* The LLVM path should include the version and resemble the following: ```C:\LLVM\3.6.1\```
 
 If you are still unsure, verify the following:  
 * The ARM GCC directory contains "bin", "lib", and "arm-none-eabi" folders
-* The LLVM directory contains the following folder structure LLVM_DIR\build\x64\Debug\bin
+* The LLVM directory contains the following folder structure ```LLVM_DIR\build\x64\Debug\bin```
 
 ## Device setup
 * Setup your device following instructions at https://developer.mbed.org/platforms/mbed-LPC1768/. This includes updating the device firmware to support the MTP driver and virtual serial port.  
@@ -57,7 +57,7 @@ If you are still unsure, verify the following:
 5. If the solution doesn't build, right click on the solution, go to project dependencies, select "Native" from the dropdown, check Managed in the list below, then click Apply
 
 ## Deploying and Debugging
-1. To manually deploy, plug in the mBed device, go to <solution directory>\ARM\Debug and copy the <solution name>.bin file to the drive letter of the mBed device.
+1. To manually deploy, plug in the mBed device, go to ```<solution directory>\ARM\Debug``` and copy the <solution name>.bin file to the drive letter of the mBed device.
 2. To deploy and debug in Visual Studio, click F5, or click the green play button.
 3. A prompt may come up asking to permit the debugger execution. Click Allow
 4. If debugging does not appear to be working, go to Native project properties, click the Debugging section, change the "Use flash tool" field to "No", and restart debugging.
