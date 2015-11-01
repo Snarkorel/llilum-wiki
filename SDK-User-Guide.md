@@ -35,7 +35,7 @@ In order to create the SDK, the user must first go through the [setup steps](htt
 4. Open an administrative command prompt, CD to the ```SDKDrop``` directory, and run ```InstallVSTools.cmd <ARM GCC path> <LLVM path>```
 
 * The ARM GCC path should include the version and resemble the following: ```C:\ARM_GCC\4.9\```
-* The LLVM path should include the version and resemble the following: ```C:\LLVM\3.6.1\```
+* The LLVM path should include the version and resemble the following: ```C:\LLVM\3.7.0\```
 
 If you are still unsure, verify the following:  
 * The ARM GCC directory contains "bin", "lib", and "arm-none-eabi" folders
