@@ -6,8 +6,7 @@ remind users that the board configurations are not yet finalized, and will most 
 While we will do our best to ensure all user-added board configurations can be built, we cannot guarantee that they will always work - that
 will be up to the community.  
   
-There are also plans to create a project template for creating new boards. Unfortunately, maintaining the template would be far too 
-time consuming, until the boards are in a less volatile state.
+There are also plans to create a project template for creating new boards. Unfortunately, maintaining the template would be far too time consuming while the boards are in such a volatile state.
   
 ## Prerequisites
 Before starting, please have the following:
