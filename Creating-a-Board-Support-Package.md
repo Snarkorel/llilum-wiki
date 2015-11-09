@@ -44,7 +44,7 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 9. Open the AssemplyInfo.cs file and set AssemblyTitle to "STM32L152" and AssemblyProduct to "STM32L152"
 10. Open the properties for STM32L152Configuration project
 11. **THE NEXT 2 STEPS ARE IMPORTANT TO GET RIGHT. DEBUGGING ISSUES WILL BE DIFFICULT IF NAMING CONVENTION NOT FOLLOWED**
-12. Change Assembly Name to "Microsoft.Llilum.BoardConfiguration.STM32L152" and DefaultNamespace to "Microsoft.Llilum.BoardConfigurations"
+12. Change Assembly Name to "Microsoft.Llilum.BoardConfigurations.STM32L152" and DefaultNamespace to "Microsoft.Llilum.BoardConfigurations"
 13. Open the AssemblyInfo.cs file. Set AssemblyTitle and AssemblyProduct to "Microsoft.Llilum.BoardConfigurations.STM32L152"
   
 ## Adding Files to the Board Configuration Project
