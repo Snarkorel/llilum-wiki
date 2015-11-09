@@ -35,17 +35,18 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 1. Unload the STM32L152, and LPC1768 projects (right click -> unload project)
 2. From the LPC1768 csproj file, copy everything after the first "PropertyGroup" element, and replace the matching portions of the STM32L152 project
 (meaning leave the first property group alone, and replace everything else)
-3. Unload the LPC1767Configuration and STM32L152Configuration projects
-4. Copy the "OutputPath" elements from the LPC1768Configuration project to the STM32L152Configuration project
-5. Replace the ItemGroup with DLL references in STM32L152Configuration project, with the one in LPC1768Configuration project
-6. Reload all of the projects
-7. Open the properties for the STM32L152 project
-8. Set Assembly Name to "STM32L152", Default Namespace to "Microsoft.Llilum.STM32L152", and Target Framework to ".NET 4.5"
-9. Open the AssemplyInfo.cs file and set AssemblyTitle to "STM32L152" and AssemblyProduct to "STM32L152"
-10. Open the properties for STM32L152Configuration project
-11. **THE NEXT 2 STEPS ARE IMPORTANT TO GET RIGHT. DEBUGGING ISSUES WILL BE DIFFICULT IF NAMING CONVENTION NOT FOLLOWED**
-12. Change Assembly Name to "Microsoft.Llilum.BoardConfigurations.STM32L152" and DefaultNamespace to "Microsoft.Llilum.BoardConfigurations"
-13. Open the AssemblyInfo.cs file. Set AssemblyTitle and AssemblyProduct to "Microsoft.Llilum.BoardConfigurations.STM32L152"
+3. Copy the "<Import Project="...BuildEnv.props" .../>" line above the first "PropertyGroup" element, and replace the matching line in the STM32L152 csproj file
+4. Unload the LPC1767Configuration and STM32L152Configuration projects
+5. Copy the "OutputPath" elements from the LPC1768Configuration project to the STM32L152Configuration project
+6. Replace the ItemGroup with DLL references in STM32L152Configuration project, with the one in LPC1768Configuration project
+7. Reload all of the projects
+8. Open the properties for the STM32L152 project
+9. Set Assembly Name to "STM32L152", Default Namespace to "Microsoft.Llilum.STM32L152", and Target Framework to ".NET 4.5"
+10. Open the AssemplyInfo.cs file and set AssemblyTitle to "STM32L152" and AssemblyProduct to "STM32L152"
+11. Open the properties for STM32L152Configuration project
+12. **THE NEXT 2 STEPS ARE IMPORTANT TO GET RIGHT. DEBUGGING ISSUES WILL BE DIFFICULT IF NAMING CONVENTION NOT FOLLOWED**
+13. Change Assembly Name to "Microsoft.Llilum.BoardConfigurations.STM32L152" and DefaultNamespace to "Microsoft.Llilum.BoardConfigurations"
+14. Open the AssemblyInfo.cs file. Set AssemblyTitle and AssemblyProduct to "Microsoft.Llilum.BoardConfigurations.STM32L152"
   
 ## Adding Files to the Board Configuration Project
 1. Add files called "Configuration.cs" and "STM32L152.FrontEndConfig" (text file) to the STM32L152Configuration project
