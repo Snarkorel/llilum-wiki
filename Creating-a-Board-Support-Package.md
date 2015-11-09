@@ -49,7 +49,7 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
   
 ## Adding Files to the Board Configuration Project
 1. Add files called "Configuration.cs" and "STM32L152.FrontEndConfig" (text file) to the STM32L152Configuration project
-2. Open the STM32L152.FrontEndConfig file and open the STM32L152.FrontEndConfig file from the LPC1768Configuration project
+2. Open the STM32L152.FrontEndConfig file and open the LPC1768.FrontEndConfig file from the LPC1768Configuration project
 3. Copy the contents of the LPC1768.FrontEndConfig file into the STM32L152.FrontEndConfig file
 4. In STM32L152.FrontEndConfig, change all instances of "LPC1768" to "STM32L152"
 5. Follow steps 2-4 for the Configuration.cs file
