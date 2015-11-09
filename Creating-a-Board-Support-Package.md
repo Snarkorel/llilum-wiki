@@ -35,7 +35,7 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 1. Unload the STM32L152, and LPC1768 projects (right click -> unload project)
 2. From the LPC1768 csproj file, copy everything after the first "PropertyGroup" element, and replace the matching portions of the STM32L152 project
 (meaning leave the first property group alone, and replace everything else)
-3. Copy the "<Import Project="...BuildEnv.props" .../>" line above the first "PropertyGroup" element, and replace the matching line in the STM32L152 csproj file
+3. Copy the "\<Import Project="...BuildEnv.props" .../>" line above the first "PropertyGroup" element, and replace the matching line in the STM32L152 csproj file
 4. Unload the LPC1767Configuration and STM32L152Configuration projects
 5. Copy the "OutputPath" elements from the LPC1768Configuration project to the STM32L152Configuration project
 6. Replace the ItemGroup with DLL references in STM32L152Configuration project, with the one in LPC1768Configuration project
