@@ -12,7 +12,7 @@ There are also plans to create a project template for creating new boards. Unfor
 Before starting, please have the following:
 * Llilum repo cloned on the machine
 * mBed repo cloned on the machine
-* Complete the [setup steps](https://github.com/NETMF/llilum/wiki/setup) and **build the Zelig solution**
+* Complete the [setup steps](https://github.com/NETMF/llilum/wiki/Setup) and **build the Zelig solution**
 * (Optional) Complete the [SDK setup](https://github.com/NETMF/llilum/wiki/SDK-User-Guide) if adding BSP to SDK
   
 ## Preface
@@ -21,14 +21,14 @@ A large portion of this demo is copying the configuration of a similar board, so
 because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base it on the K64F BSP.  
   
 **NOTE:**  
-**Please see [this commit](https://github.com/NETMF/llilum/commit/588b9190baad3ef1ab939670ffea2e440fd10830) to see all of the changes made to add the STM32L152 BSP**
+**Please see [this commit](https://github.com/NETMF/llilum/commit/ca018e1f9c37b81f708f795a0b856ba65c69ef03) to see changes made for adding the STM32F401 or [this older commit](https://github.com/NETMF/llilum/commit/588b9190baad3ef1ab939670ffea2e440fd10830) to see all of the changes made to add the STM32L152 BSP**
   
 ## Creating the Board Configuration Projects
 1. In Explorer, create a new folder called STM32L152 in `<repo root>\Zelig\BoardConfigurations\`
 2. Open the BoardConfiguration solution under `<repo root>\Zelig\BoardConfigurations`
 3. In Solution Explorer, add a new solution folder called "STM32L152"
 4. Add a new "Class Library" project called "Board" to the STM32L152 solution folder and set its location to `<repo root>\Zelig\BoardConfigurations\STM32L152`
-5. Repeat step 3, with a project called "Configuration"
+5. Repeat step 4, with a project called "Configuration"
 6. In Solution Explorer, rename the Board project to "STM32L152" and the Configuration project to "STM32L152Configuration"
   
 ## Modifying the Board Configuration Projects
@@ -38,7 +38,7 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 3. Copy the "\<Import Project="...BuildEnv.props" .../>" line above the first "PropertyGroup" element, and replace the matching line in the STM32L152 csproj file
 4. Unload the LPC1767Configuration and STM32L152Configuration projects
 5. Copy the "OutputPath" elements from the LPC1768Configuration project to the STM32L152Configuration project
-6. Replace the ItemGroup with DLL references in STM32L152Configuration project, with the one in LPC1768Configuration project
+6. Replace the ItemGroup with DLL references in STM32L152Configuration project, with the one in LPC1768Configuration project. Repeat step 3 for this project.
 7. Reload all of the projects
 8. Open the properties for the STM32L152 project
 9. Set Assembly Name to "STM32L152", Default Namespace to "Microsoft.Llilum.STM32L152", and Target Framework to ".NET 4.5"
@@ -56,6 +56,11 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 5. Follow steps 2-4 for the Configuration.cs file
 6. Change the CoreClockFrequency to that of the STM32L152 (32000000 for the STM32L152 Nucleo Board). RealTimeClockFrequency will be 1MHz on mBed
 7. This project should now be able to build
+
+## Modify the Memory Map
+1. Find a datasheet for your board such as this one: http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00115249.pdf
+2. Determine the base memory address for Flash and RAM, and modify within the file
+3. Change the class names of the memories to reflect the size accurately for the board
   
 ## Adding Files to the Board Project
 1. In Explorer, open `<repo root>\Zelig\BoardConfigurations\STM32L152\Board` and `<repo root>\Zelig\BoardConfigurations\LPC1768\Board`
@@ -72,7 +77,8 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 12. Find the PinToIndex function, and change it to match the pins for your board. All pins should map from index 0 to PinCount-1
 13. Find and modify GetGpioPinIRQNumber to match what is being set in gpio_irq_init in mbed (`<mbed root>\libraries\mbed\targets\hal\TARGET_STM\TARGET_STM32L1\gpio_irq_api.c`)
 14. This step is purely pattern matching: go through the board schematic, and determine which pins are used for which peripherals, and change values as appropriate
-15. Rebuild the solution, and if everything was done correctly, it should all compile.
+15. Find the file "PeripheralPins.c" for your board. Determine the appropriate peripherals and SerialPort IRQ numbers from there.
+16. Rebuild the solution, and if everything was done correctly, it should all compile.
 
 ## Modifying the Makefile
 1. Go to [mBed](http://developer.mbed.org/compiler), create a simple program for your board, right click on the project, click Export, and Export for GCC (ARM Embedded)
@@ -83,20 +89,21 @@ because they are both Cortex-M3 boards. For Cortex-M4, it would be best to base 
 6. Replace all instances of "./mbed" for the filepath to $(MBED_ROOT)
 7. Add "OBJECTS += $(TARGET)\startup_stm32l152xe.o" or the equivalent of that
 8. Remove the startup_stm32l152xe.o file from the SYS_OBJECTS variable
-9. Find the correct startup file in mbed (startup_stm32l152xe.S in a TOOLCHAIN_GCC_ARM directory) and copy it to the current directory. You may need to change the stack or heap size later, which this file will allow you to do.
-10. Compare the new section to the existing ones - ensure that everything looks like it matches the correct patterns
-11. (Optional) Copy main.cpp from the ZIP file to `<llilum repo>\Zelig\LLVM2IR_results\mbed\simple` and run "make STM32L152" from a 
-command prompt. If everything builds, and then you have most likely succeeded.
+9. Find the correct startup file in mbed (startup_stm32l152xe.S in a TOOLCHAIN_GCC_ARM directory) and copy it to the $(LLILUM_ROOT)\Zelig\os_layer\ARMv7M\Vectors directory. 
+10. You will need to define the heap size (and optionally the stack size) here.  Use the file startup_LPC17xx.s as a guide.  Defining __HeapBase and __HeapEnd are critical because they are used to define the Llilum heap location. __HeapEnd must be placed immediately after __HeapBase in memory because the address of the symbols are used to dynamically determine the size defined for the Llilum heap (in $(LLILUM_ROOT)\Zelig\os_layer\ports\mbed\mbed_core.cpp).
+11. Compare the new section to the existing ones - ensure that everything looks like it matches the correct patterns
+12. (Optional) Copy main.cpp from the ZIP file to `<llilum repo>\Zelig\LLVM2IR_results\mbed\simple`, comment out the line in the makefile that adds the `.\Microsoft.Zelig.Test.mbed.Simple_opt.o` target and run `make TARGET=STM32L152` from a command prompt. If everything builds, and then you have most likely succeeded.
+13. If you completed step 11, uncomment the `.\Microsoft.Zelig.Test.mbed.Simple_opt.o` line  
 
 ## Testing the compilation
 **If you are not able to build and run your code at the end of this section, DO NOT MOVE ON. Something is broken, and needs to be fixed before spending time on the SDK**  
   
-1. In the Llilum solution, Native project, there is a helpers.h file. Open it, and add a section for the STM32L152 header
+1. In the Llilum solution, MbedOSAbstraction project, there is a mbed_helpers.h file. Open it, and add a section for the STM32L152 header
 2. Find the "simple" project, and add a reference to "STM32L152.dll", which should be in the same place as "LPC1768.dll"
 3. Open the Program.cs file in the "simple" project, and comment out all of the #defines at the top, except for "USE_GPIO"
 4. Add a #define for STM32L152, and add code throught Program.cs, that sets up the right pins, and uses correct ports (essentially, modify the program so that it just blinks an LED)
 5. Right click, and build the simple project. If it builds, you can move on.
-6. Follow the steps from [demo](https://github.com/NETMF/llilum/wiki/demo) to set up the FrontEnd project. Notice the parameter being passed to debug
+6. Follow the steps from [demo](https://github.com/NETMF/llilum/wiki/Demo) to set up the FrontEnd project. Notice the parameter being passed to debug
 7. Copy mbed_simple_LPC1768.FrontEndConfig, paste it there, and call it mbed_simple_STM32L152.FrontEndConfig
 8. Change the argument passed to FrontEnd debug, so that it reads `-cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple_STM32L152.FrontEndConfig`
 9. Open that file, and change all instances of "LPC1768" to "STM32L152" (there should be at least 3)

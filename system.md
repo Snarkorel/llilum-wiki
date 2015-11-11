@@ -1,19 +1,19 @@
 # System Architecture
 
-Zelig is not dissimilar from LLVM. As a matter of facts, the code base started a while back and the vast majority of the code was created by D.M., the same developer that created the core of .NET Micro Framework TS interpreter.  
+Zelig is not dissimilar from LLVM. As a matter of facts, the code base started a while back and the vast majority of the code was created by D.M., the same developer that created the core of .NET Micro Framework Type System (TS) interpreter.  
 Zelig ingests MSIL out of a standard .dll or .exe set of files, and then transforms MSIL into a custom high level IR to apply a series of optimizations, just like LLVM does. Zelig also features an abstraction for the target HW platform, which is used to produce a runnable image. 
 
-Code in IR is represented as a Control Flow Graph (CFG) of basic blocks describes as rich set of Expression and Operator types that map well to MSIL constructs. Types are represented by a rich hierarchy of Type Representation that maps to the well known CLI topology. 
+Code in intermediate representation (IR) is represented as a Control Flow Graph (CFG) of basic blocks describes as rich set of Expression and Operator types that map well to MSIL constructs. Types are represented by a rich hierarchy of Type Representation that maps to the well known CLI topology. 
 The complete [IR class diagram](https://github.com/NETMF/llilum-pr/wiki/IR_ClassDiagram.jpg) gives you an idea of the IR organization. 
 
-During the optimization phases the CFG is traversed by a set of Transformation Handlers, and expression, operators and types are morphed and transformed to adapt to application and platform requirements. 
+During the optimization phases the CFG is traversed by a set of Transformation Handlers; there expression, operators, and types are morphed and transformed to adapt to application and platform requirements. 
 The IR is lowered twice and ARM code is emitted for ARMv4 and v5 ISA directly, and a runnable imaged is synthesized based on the platform abstraction implemented by the user. For ARMv7 high level IR is translated into equivalent LLVM bit code, optimized and compiled through LLVM standard tools, such as [opt](http://llvm.org/docs/CommandGuide/opt.html) and [llc](http://llvm.org/docs/CommandGuide/llc.html). The resulting object code can be linked just like any other object code. 
 
-In our [demo](https://github.com/NETMF/llilum-pr/wiki/demo) we use [GCC for ARM](https://launchpad.net/gcc-arm-embedded/) and [Mbed](https://mbed.org/) to target a [NXP LPC1768](https://developer.mbed.org/platforms/mbed-LPC1768/) processor. 
+In our [demo](https://github.com/NETMF/llilum-pr/wiki/demo) we use [GCC for ARM](https://launchpad.net/gcc-arm-embedded/) and [Mbed](https://mbed.org/) to target a [NXP LPC1768](https://developer.mbed.org/platforms/mbed-LPC1768/) processor. In general, anything that applies to the LPC1768 processor applies to all other supported boards as well. Given the uniformity of the code base, you will be able to just substitute the string 'LPC1768' with, say, 'K64F' and instructions will just apply verbatim.
 
 
 ## Type System Representation
-Let's look into some details of the TS intermediate representation (IR). This is where all code transformation happen. 
+Let's look into some details of the TS IR. This is where all code transformation happen. 
 Mostly the TS representation is made of a CFG of Expressions and Operators created during the MSIL ingestion. 
 At that time, Generics are resolved as well into a flat representation on the internal type hierarchy. 
 The same Type Representation is used both at Compile -Time and Run -Time. This characteristic is peculiar to Zelig and makes the system elegant and self-contained. The Type System is part of the run-time support in the code base.
@@ -221,7 +221,7 @@ This is the equivalent Zelig types hierarchy, with the addition of the delayed t
 ### LLVM Type System layout
 LLVM is built for languages like C++. C++ lays virtual tables in front of an object and so will we in our translation to LLVM bit code. 
 
-Any reference type will derive from `System.Object`. `System.Object` will carried the `Microsoft.Zelig.Runtime.ObjectHeader` member at offset 0, to allows handling of the Object in the managed heap. The `ObjectHeader` type will carry the identity and GC tracking info. 
+Any reference type will derive from `System.Object`. `System.Object` will carry the `Microsoft.Zelig.Runtime.ObjectHeader` member at offset 0, to allows handling of the Object in the managed heap. The `ObjectHeader` type will carry the identity and GC tracking info. Any reference to a managed object will be represented in LLVM as a native pointer to the object payload, i.e. will be a pointer pointing just past the object header. 
 
 In Zelig code this looks like: 
 

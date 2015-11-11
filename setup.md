@@ -4,7 +4,7 @@
 
 ### Prerequisites:
 1. Visual Studio 2015 (RTM)
-2. LLVM 3.7.0 \[ [download page]( http://llvm.org/releases/download.html#3.7.0 ) \]
+2. LLVM 3.8.1 Release Distribution \[ [download]( http://llvm.org/releases/download.html#3.8.1 ) \] or clone the LLVM [repo] (https://github.com/llvm-mirror/llvm) and build it for Visual Studio 2015
 3. Python [2.7.4](https://www.python.org/downloads/release/python-2710/) installed and added to PATH
 4. [ARM GCC](https://launchpad.net/gcc-arm-embedded) installed and added to PATH
 5. [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm) to build mBed sample code for target devices with GCC
@@ -13,13 +13,13 @@
 
 ### Building required LLVM binaries:
 ###### (one time activity per LLVM version)
-To build the Llilum source code you will need to download the [3.7.0 sources](http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz) of LLVM.
+To build the Llilum source code you will need to download the [3.8.0 sources](http://llvm.org/pre-releases/3.8.0/rc1/llvm-3.8.0rc1.src.tar.xz) of LLVM.
 > NOTE: Use the links provided here to get the LLVM source code as alternate sites, including the Mirror on GitHub may not be the correct version. In fact, the GitHub Mirror will NOT be as it tracks the head of the development branch for the currently unreleased version rather than the latest stable released version.
 
 To build LLVM source code, you need to install [CMake](http://www.cmake.org/download/) and add it to your system's PATH environment variable. 
 To build LLVM, you may follow instructions [here](http://llvm.org/) or [here](http://llvm.org/docs/GettingStarted.html), but it is best to use the [BuildLlvmWithVS.cmd script file](https://github.com/NETMF/llilum/blob/dev/Zelig/Zelig/CompileTime/Llvm.NET/LibLLVM/BuildLlvmWithVS.cmd) provided in the Zelig repository.
 
-1. Simply copy `BuildLlvmWithVS.cmd` (located under _\<repo\>\Zelig\Zelig\CompileTime\Llvm.NET\LibLLVM\_) into the root of your LLVM source tree for version 3.7.0
+1. Simply copy `BuildLlvmWithVS.cmd` (located under _\<repo\>\Zelig\Zelig\CompileTime\Llvm.NET\LibLLVM\_) into the root of your LLVM source tree for version 3.8.0
 2. run `BuildLlvmWithVS.cmd`
  * This will build LLVM for multiple platform and configuration combinations (\< x86 | x64 \> + \< Debug | Release | MinRelDebInfo\> ).
  * _Depending on your hardware this can take anywhere from 3-6 hours to run and creates ~20GB of binaries. Thus, for teams it is recommended to do it once and share the LLVM source root on your network so everyone doesn't need to do that and store all the results._  

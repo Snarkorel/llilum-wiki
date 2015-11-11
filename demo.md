@@ -10,7 +10,7 @@ The device is enabled for the Mbed ecosystem. Any other Mbed device could be use
 ## Build Zelig image
 * Make the FrontEnd project the startup project in your solution, or simply run the FrontEnd executable from the command line
   * If using the solution, configure the debug properties as follows:  
-    `-cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple.FrontEndConfig`  
+    `-cfg ..\..\..\..\Zelig\CompileTime\CodeGenerator\FrontEnd\mbed_simple_LPC1768.FrontEndConfig`  
 
 ![FrontEnd project debug configuration](https://github.com/NETMF/llilum-pr/wiki/FrontEndconfig.PNG)
 

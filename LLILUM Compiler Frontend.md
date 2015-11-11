@@ -104,4 +104,5 @@ A typical configuration file for the compiler looks like a list of instructions,
 * **-DumpLLVMIR_TextRepresentation**: instructs the compiler to dump the LLVM IR in readable format.
 * **-MaxProcs** \<_n_\>: instructs the compiler to use _n_ threads to compile
 
-[==> repo layout](https://github.com/NETMF/llilum/wiki/docs/resources/repo)
+[==> Setup and Build Instructions](https://github.com/NETMF/llilum-pr/wiki/Setup)
+

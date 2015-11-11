@@ -9,7 +9,7 @@ As of right now, the prerequisites for building and using the SDK are:
 * Cross-platform development tools for Visual Studio for debugging purposes: [see prerequisites section](https://github.com/Microsoft/MIEngine/) 
 * [Visual Studio Extensibility Tools](https://go.microsoft.com/fwlink/?LinkId=615455) 
 * [Visual Studio Project System Extensibility Tools](http://aka.ms/vsprojectsystemextensibilityvsix)
-* LLVM and ARM GCC from [setup steps](https://github.com/NETMF/llilum/wiki/setup)
+* LLVM and ARM GCC from [setup steps](https://github.com/NETMF/llilum/wiki/Setup)
 
 ## Components 
 1. The Llilum Compiler
@@ -22,24 +22,20 @@ As of right now, the prerequisites for building and using the SDK are:
 8. Visual Studio Llilum template and project type 
 
 ## Creating the SDK
-In order to create the SDK, the user must first go through the [setup steps](https://github.com/NETMF/llilum/wiki/setup). **Be sure to actually build the entire Llilum Solution!**  
+In order to create the SDK, the user must first go through the [setup steps](https://github.com/NETMF/llilum/wiki/Setup). **Be sure to actually build the entire Llilum Solution!**  
 
-1. Open `<repo_root>\VisualStudio\LlilumProjectType\LlilumApplication.sln` right click on the solution, and click rebuild. 
-2. Open a command prompt to the repository root, `run setenv.cmd`, CD into `"<repo root>\Scripts"`
-3. Run CreateSDKDrop.bat from the Scripts directory. If all goes well, no errors will be shown, and a folder called SDKDrop will be created and filled in the Scripts directory. To keep your repo clean, call `CreateSDKDrop.bat <path>` where path is the location of where to place the SDK. 
+Full details on building the SDK are located in the [SDK source readme.md](https://github.com/NETMF/llilum/tree/dev/LlilumSDK)
 
 ## Installing Llilum SDK for VS2015
 1. If you have previously installed the Llilum SDK, open Visual Studio and go to ```Tools -> Extensions and Updates``` and remove the Llilum application VSIX.
 2. Close all instances of Visual Studio to avoid having to restart your machine
-3. Copy the SDK folder to a location without spaces i.e. C:\SDK. If you have previously installed this SDK, it would help to place the SDKDrop folder in the same place as you previously had it
-4. Open an administrative command prompt, CD to the ```SDKDrop``` directory, and run ```InstallVSTools.cmd <ARM GCC path> <LLVM path>```
+3. Install Click on the MSI to install the SDK
 
-* The ARM GCC path should include the version and resemble the following: ```C:\ARM_GCC\4.9\```
-* The LLVM path should include the version and resemble the following: ```C:\LLVM\3.7.0\```
+## Install Visual Studio Extension
+Install the Llilum Visual Studio project system and debugger extensions. This is isolated from the MSI to prevent binding the MSI to any particular Visual Studio Version. We may unify this with an installer executable in the future - for now they remain distinct.
 
 If you are still unsure, verify the following:  
 * The ARM GCC directory contains "bin", "lib", and "arm-none-eabi" folders
-* The LLVM directory contains the following folder structure ```LLVM_DIR\build\x64\Debug\bin```
 
 ## Device setup
 * Setup your device following instructions at https://developer.mbed.org/platforms/mbed-LPC1768/. This includes updating the device firmware to support the MTP driver and virtual serial port.  
