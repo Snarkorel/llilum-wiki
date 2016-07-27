@@ -407,4 +407,4 @@ Notice how operations such as getting the length of an array or calling a finali
         }
 
 
-[==> next](https://github.com/NETMF/llilum/wiki/system.build)
+[==> next](https://github.com/NETMF/llilum/wiki/Building)
