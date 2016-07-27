@@ -52,3 +52,4 @@ A rather complete GDB tutorial can be found at http://web.mit.edu/gnu/doc/html/g
 
 Welcome to LLILUM!  
 
+[==> Performance Considerations](https://github.com/NETMF/llilum/wiki/Performance-Considerations)
