@@ -28,4 +28,4 @@ Some further ideas for discussion, contribution and scheduling
  * Secure boot loading and attestation 
 
 #Milestones
-We will try and prepare an Alpha released before 2015 year-end and we may have a Beta in late January or shortly after.
+...
