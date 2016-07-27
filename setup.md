@@ -41,3 +41,5 @@ NOTE: please note that the [SDK projects](https://github.com/NETMF/llilum/tree/d
 #### Building a sample target application
 To build a sample application manually, see [Build and Run Test Demo](https://github.com/NETMF/llilum/wiki/demo)  
 To get started with Visual Studio and the Llilum SDK, see [SDK User Guide](https://github.com/NETMF/llilum/wiki/SDK-User-Guide)
+
+[==> Demo](https://github.com/NETMF/llilum/wiki/Demo)
