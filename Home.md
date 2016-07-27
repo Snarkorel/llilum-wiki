@@ -10,3 +10,6 @@ Please read the following to get started:
 4. [Performance considerations](https://github.com/NETMF/llilum-pr/wiki/Performance-Considerations)
 5. [Next steps](https://github.com/NETMF/llilum-pr/wiki/Prototype-Roadmap) 
 
+Please also read about [TCP/IP and CMSIS-RTOS](https://github.com/NETMF/llilum/wiki/TCP-IP-stack-support-with-lwIP-and-CMSIS-RTOS) and [Supported Hardware](https://github.com/NETMF/llilum/wiki/Supported-Hardware). 
+
+
